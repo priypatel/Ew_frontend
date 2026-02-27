@@ -12,10 +12,10 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<h1>Products</h1>} />
+          {/* <Route path="/" element={<h1>Products</h1>} /> */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/products" element={<Product />} />
+          <Route path="/" element={<Product />} />
           <Route path="/addProducts" element={<CreateProduct />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>

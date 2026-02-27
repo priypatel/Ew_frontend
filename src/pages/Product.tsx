@@ -101,6 +101,7 @@ export default function Product() {
     const matchesCategory = category ? p.category === category : true;
     return matchesSearch && matchesCategory;
   });
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
   return (
     <>
@@ -140,7 +141,7 @@ export default function Product() {
                 className="bg-white shadow rounded-lg overflow-hidden border"
               >
                 <img
-                  src={`http://localhost:5000${product.imageUrl}`}
+                  src={`${API_URL}${product.imageUrl}`}
                   alt={product.name}
                   className="w-full h-48 object-cover rounded"
                 />

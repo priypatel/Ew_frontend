@@ -28,7 +28,7 @@ export default function Login() {
                 const res = await api.post("/auth/login", values);
                 if (res.data.success) {
                   setUser(res.data.user);
-                  navigate("/products");
+                  navigate("/");
                 }
               } catch (error: any) {
                 setFieldError("password", "Invalid credentials");

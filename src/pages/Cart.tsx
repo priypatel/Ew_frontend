@@ -14,7 +14,7 @@ interface CartItem {
 export default function Cart() {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(true);
-
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
   useEffect(() => {
     const loadCart = async () => {
       try {
@@ -49,7 +49,6 @@ export default function Cart() {
     }
   };
 
-  //remove from cart
   const removeFromCart = async (productId: string) => {
     try {
       const res = await api.delete(`/cart/remove/${productId}`);
@@ -73,11 +72,11 @@ export default function Cart() {
         {cart.map((item) => (
           <div
             key={item.product._id}
-            className="flex items-center justify-between border-b pb-4"
+            className="flex items-center justify-between border-gray-200 p-4 rounded-xl shadow"
           >
             <div className="flex items-center space-x-4">
               <img
-                src={`http://localhost:5000${item.product.imageUrl}`}
+                src={`${API_URL}${item.product.imageUrl}`}
                 alt={item.product.name}
                 className="w-16 h-16 object-cover rounded-md"
               />
@@ -94,7 +93,7 @@ export default function Cart() {
                 onClick={() =>
                   updateQuantity(item.product._id, item.quantity - 1)
                 }
-                className="px-2 py-1 bg-gray-200 rounded-md"
+                className="px-2 py-1 bg-gray-200 rounded-md border-none"
               >
                 -
               </button>
@@ -105,14 +104,14 @@ export default function Cart() {
                 onClick={() =>
                   updateQuantity(item.product._id, item.quantity + 1)
                 }
-                className="px-2 py-1 bg-gray-200 rounded-md"
+                className="px-2 py-1 bg-gray-200 rounded-md border-none"
               >
                 +
               </button>
 
               <button
                 onClick={() => removeFromCart(item.product._id)}
-                className="ml-4 px-3 py-1 bg-red-500 text-white rounded-md"
+                className="ml-4 px-3 py-1 bg-red-500 text-white rounded-md border-none"
               >
                 Remove
               </button>
@@ -121,13 +120,12 @@ export default function Cart() {
         ))}
       </div>
 
-      {/* SINGLE TOTAL + CHECKOUT BELOW */}
       <div className="flex justify-end items-center mt-6 gap-6">
         <p className="text-xl font-semibold">Total: ₹{total.toFixed(2)}</p>
 
         <button
           onClick={() => alert("Checkout functionality not implemented")}
-          className="px-6 py-2 bg-green-500 text-white rounded-md text-lg"
+          className="px-6 py-2 bg-green-500 text-white rounded-md text-lg border-none"
         >
           Checkout
         </button>

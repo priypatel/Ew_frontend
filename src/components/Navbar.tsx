@@ -6,13 +6,13 @@ export default function Navbar() {
     <>
       <nav className="bg-white shadow-md p-4 top-0 z-20">
         <div className="max-w-6xl mx-auto flex item-center justify-between">
-          <Link to="/products" className="text-xl font-bold text-blue-400">
+          <Link to="/" className="text-xl font-bold text-blue-400 no-underline">
             Product
           </Link>
           <div className="flex items-center gap-6">
             <Link
               to="/cart"
-              className="text-xl font-bold text-blue-400 hover:text-blue-600 "
+              className="text-xl font-bold text-blue-400 hover:text-blue-600 no-underline"
             >
               <span>Cart</span>
             </Link>
@@ -20,13 +20,13 @@ export default function Navbar() {
               <>
                 <Link
                   to="/login"
-                  className="text-xl font-bold text-blue-400 hover:text-blue-600"
+                  className="text-xl font-bold text-blue-400 hover:text-blue-600 no-underline"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="text-xl font-bold text-blue-400 hover:text-blue-600"
+                  className="text-xl font-bold text-blue-400 hover:text-blue-600 no-underline"
                 >
                   Register
                 </Link>
@@ -34,7 +34,7 @@ export default function Navbar() {
             ) : (
               <Link
                 to="/addProducts"
-                className="text-xl font-bold text-blue-400 hover:text-blue-600"
+                className="text-xl font-bold text-blue-400 hover:text-blue-600 no-underline"
               >
                 Add Products
               </Link>
